@@ -3,6 +3,7 @@
 #define __CVX_POLYTOPE_SPATIAL_H
 
 #include <cilantro/spatial/space_region.hpp>
+#include <cilantro/utilities/point_cloud.hpp>
 #include <iostream>
 
 using namespace std;
@@ -48,13 +49,29 @@ public:
     
     void sr_complement();
 
-    void sr_union_with(SpatialRegion* sr );
+    void sr_relative_complement(SpatialRegion *sr);
 
-    void sr_intersection_with(SpatialRegion* sr);
+    void sr_union_with(SpatialRegion *sr);
+
+    void sr_intersection_with(SpatialRegion *sr);
+
+    void set_dim(dimension d);
+
+    dimension get_dim();
 
     void print_space_region2D(){
         cout << "polytope size: " << this->sRegion2D.getConvexPolytopes().size() << endl;
         for(auto polytope : this->sRegion2D.getConvexPolytopes()){
+                cout << "polytope:\n" << polytope.getVertices() << endl;    
+                cout << "Area: " << polytope.getArea() << endl;    
+                cout << "Volume: " << polytope.getVolume() << endl; 
+                cout << "--------------------------\n";   
+        }
+    }    
+    
+    void print_space_region3D(){
+        cout << "polytope size: " << this->sRegion3D.getConvexPolytopes().size() << endl;
+        for(auto polytope : this->sRegion3D.getConvexPolytopes()){
                 cout << "polytope:\n" << polytope.getVertices() << endl;    
                 cout << "Area: " << polytope.getArea() << endl;    
                 cout << "Volume: " << polytope.getVolume() << endl; 
