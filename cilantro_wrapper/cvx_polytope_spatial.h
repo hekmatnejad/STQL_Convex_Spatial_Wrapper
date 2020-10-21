@@ -19,6 +19,7 @@ class SpatialRegion {
     std::vector<Eigen::Vector3f> vertices3D;
     cilantro::SpaceRegion2f sRegion2D;
     cilantro::SpaceRegion3f sRegion3D;
+    bool isEmpty = true;
 
 public:
     //void* obj;
@@ -59,6 +60,10 @@ public:
     void set_dim(dimension d);
 
     dimension get_dim();
+
+    bool get_isEmpty();
+
+    void set_isEmpty(bool val);
 
     void print_space_region2D(){
         cout << "polytope size: " << this->sRegion2D.getConvexPolytopes().size() << endl;

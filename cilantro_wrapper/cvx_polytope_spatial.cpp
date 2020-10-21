@@ -30,19 +30,29 @@
                         }
                         sRegion2D = cilantro::SpaceRegion2f(this->vertices2D);
                 }
+                if(size > 0)
+                this->set_isEmpty(false);
         
     }
 
     SpatialRegion* SpatialRegion::sr_clone(){
 
             SpatialRegion* copy = new SpatialRegion();
-            //copy->sRegion2D = this->sRegion2D;
             *copy = *this;
             return copy;
     }
 
     void SpatialRegion::sr_release(){
-            delete this;
+            if(this->dim == dimension::D2){
+                this->vertices2D.clear();
+                this->sRegion2D.~SpaceRegion();
+            }
+            else{
+                this->vertices3D.clear();
+                this->sRegion3D.~SpaceRegion();    
+            }
+            //delete this;
+            set_isEmpty(true);
     }
     
     void SpatialRegion::sr_complement(){
@@ -81,4 +91,12 @@
 
     dimension SpatialRegion::get_dim(){
             return dim;
+    }
+
+    bool SpatialRegion::get_isEmpty(){
+            return isEmpty;
+    }
+
+    void SpatialRegion::set_isEmpty(bool val){
+            isEmpty = val;
     }

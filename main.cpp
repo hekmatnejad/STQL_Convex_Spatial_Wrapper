@@ -8,8 +8,11 @@ void test_3D();
 int main(int argc, char* argv[]){
 
     printf("STQL Spatial Operations Wrapper\n");
+
     test_2D();
-    //test_3D();
+    
+    test_3D();
+
     return 0;
 }
 
@@ -29,7 +32,7 @@ void test_2D(){
     printf( "cloned:\n");
     print_spatial_region( sr3 );
     release_mem( sr1 );
-    //print_spatial_region( sr1 );
+    print_spatial_region( sr1 );
     //relative_complement_of( sr1, sr2 );    
     relative_complement_of( sr3, sr2 );    
    

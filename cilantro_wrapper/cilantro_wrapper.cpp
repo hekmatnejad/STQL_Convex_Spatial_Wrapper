@@ -78,8 +78,8 @@ extern "C" {
         }
 
         void print_spatial_region(const SpatialRegion_c &sr){
-                if((SpatialRegion*)sr.obj == nullptr){
-                        cout << "Object is NULL.\n";
+                if( ((SpatialRegion*)sr.obj)->get_isEmpty()){
+                        cout << "Object is empty.\n";
                         return;
                 }
 
