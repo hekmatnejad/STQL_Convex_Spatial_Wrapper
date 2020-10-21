@@ -4,33 +4,33 @@
 
 //using namespace std;
 
-    SpatialRegion::SpatialRegion(float* vert , int size){
+    SpatialRegion::SpatialRegion(float* vert , int size, int dim){
 
                 cout << "constructor with parameters\n";
 
-                if(size == dimension::D3){
-                        for(int i=0; i < 8; i ++){
+                if(dim == dimension::D3){
+                        for(int i=0; i < size; i ++){
                                 this->vertices3D.emplace_back(vert[3*i], vert[3*i+1], vert[3*i+2] );
-                                cout << vert[3*i] << " , " << vert[3*i+1] << " , " << vert[3*i+2] << endl;
+                                //cout << vert[3*i] << " , " << vert[3*i+1] << " , " << vert[3*i+2] << endl;
                         }
+                        sRegion3D = cilantro::SpaceRegion3f(this->vertices3D);
                 }
                 else{
-                        this->vertices2D.emplace_back(vert[0],vert[1] );
-                        this->vertices2D.emplace_back(vert[0],vert[3] );
-                        this->vertices2D.emplace_back(vert[2],vert[1] );
-                        this->vertices2D.emplace_back(vert[2],vert[3] );
+                        if (size == 4){
+                                this->vertices2D.emplace_back(vert[0],vert[1] );
+                                this->vertices2D.emplace_back(vert[0],vert[3] );
+                                this->vertices2D.emplace_back(vert[2],vert[1] );
+                                this->vertices2D.emplace_back(vert[2],vert[3] );
+                        }
+                        else{
+                                for(int i=0; i < size; i ++){
+                                        this->vertices2D.emplace_back(vert[2*i], vert[2*i+1] );
+                                        //cout << vert[2*i] << " , " << vert[2*i+1] << endl;
+                                }
+                        }
+                        sRegion2D = cilantro::SpaceRegion2f(this->vertices2D);
                 }
         
-                //size == 2 ? this->dim = dimension::D2 : dimension::D3;
-                if(size == 2)
-                        sRegion2D = cilantro::SpaceRegion2f(this->vertices2D);
-                else
-                        sRegion3D = cilantro::SpaceRegion3f(this->vertices3D);
-                
-    }
-
-    void SpatialRegion::test(){
-        //cout << "test\n";
     }
 
     SpatialRegion* SpatialRegion::sr_clone(){

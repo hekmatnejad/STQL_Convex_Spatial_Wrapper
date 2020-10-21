@@ -22,8 +22,6 @@ class SpatialRegion {
 
 public:
 
-    void test();
-
     SpatialRegion(){
 
     };
@@ -42,7 +40,7 @@ public:
     }
 
 
-    SpatialRegion(float* vert , int dim);
+    SpatialRegion(float* vert , int size, int dim);
 
 
     SpatialRegion* sr_clone();

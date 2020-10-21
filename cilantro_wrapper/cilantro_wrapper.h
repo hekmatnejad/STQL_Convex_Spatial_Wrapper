@@ -5,7 +5,6 @@
 extern "C" {
 #endif
 
-//struct SpatialRegion_stc;
 struct SpatialRegion_stc{
         void* obj;
 };

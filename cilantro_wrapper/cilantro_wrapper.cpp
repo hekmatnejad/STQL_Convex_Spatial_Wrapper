@@ -5,17 +5,10 @@
 
 extern "C" {
 
-        //struct SpatialRegion_stc{
-        //        void* obj;
-        //};
-        //SpatialRegion* newSpatialRegion() {
-        //        return new SpatialRegion();
-        //}
-
-        SpatialRegion_c  newSpatialRegion2D(float* vert , int size = 2 ) {
+        SpatialRegion_c  newSpatialRegion2D(float* vert , int size = 4 ) {
 
                 SpatialRegion_c newReg;
-                SpatialRegion* sr  = new SpatialRegion(vert, size);
+                SpatialRegion* sr  = new SpatialRegion(vert, size, dimension::D2);
                 newReg.obj = sr;
                 std::cout << "new 2D object created\n";
                 sr->print_space_region2D();
@@ -23,10 +16,10 @@ extern "C" {
                 return newReg;
         }
 
-        SpatialRegion_c newSpatialRegion3D(float* vert , int size){
+        SpatialRegion_c newSpatialRegion3D(float* vert , int size = 8 ){
 
                 SpatialRegion_c newReg;
-                SpatialRegion* sr  = new SpatialRegion(vert, size);
+                SpatialRegion* sr  = new SpatialRegion(vert, size, dimension::D3);
                 newReg.obj = sr;
                 std::cout << "new 3D object created\n";
                 sr->print_space_region3D();

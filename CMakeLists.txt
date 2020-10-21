@@ -7,12 +7,12 @@ include_directories (cilantro_wrapper)
 add_subdirectory (cilantro_wrapper)
 set(CMAKE_MACOSX_RPATH ON)
 
-add_executable(spatio main.cpp)
+add_executable(spatio_test main.cpp)
 
 #add_library(cilantro_wrp STATIC IMPORTED)
 
-#target_link_libraries(spatio ${CMAKE_SOURCE_DIR}/libcilantro_wrp.a libcilantro.so ) 
-target_link_libraries (spatio LINK_PUBLIC TALIBRARY libcilantro.so)
+#target_link_libraries(spatio ${CMAKE_SOURCE_DIR}/libspatial_cilantro.a libcilantro.so ) 
+target_link_libraries (spatio_test LINK_PUBLIC spatial_cilantro libcilantro.so)
 
 #install(TARGETS spatio DESTINATION bin)
 

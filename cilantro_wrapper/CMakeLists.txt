@@ -7,9 +7,9 @@ include_directories (.)
 
 file (GLOB TASOURCES  "*.cpp")
 
-add_library(TALIBRARY ${TASOURCES})
+add_library( spatial_cilantro ${TASOURCES})
 
-target_include_directories (TALIBRARY PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories (spatial_cilantro PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 
-#install(TARGETS cilantro_wrp DESTINATION ${CMAKE_SOURCE_DIR}/..)
+#install(TARGETS spatial_cilantro DESTINATION ${CMAKE_SOURCE_DIR}/..)
