@@ -9,7 +9,7 @@ int main(int argc, char* argv[]){
 
     printf("STQL Spatial Operations Wrapper\n");
     test_2D();
-    test_3D();
+    //test_3D();
     return 0;
 }
 
@@ -22,8 +22,17 @@ void test_2D(){
     const SpatialRegion_c & sr1 = newSpatialRegion2D(crd1[0], 4);
     const SpatialRegion_c & sr2 = newSpatialRegion2D(crd2[0], 4);
     printf("2D Spatial Operation Tetst...\n");
-    union_of(sr1, sr2);
-    relative_complement_of(sr1,sr2);    
+    union_of( sr1, sr2 );
+    relative_complement_of( sr1, sr2 );    
+
+    const SpatialRegion_c & sr3 = clone_me(sr1);
+    printf( "cloned:\n");
+    print_spatial_region( sr3 );
+    release_mem( sr1 );
+    //print_spatial_region( sr1 );
+    //relative_complement_of( sr1, sr2 );    
+    relative_complement_of( sr3, sr2 );    
+   
 }
 
 void test_3D(){
@@ -35,6 +44,6 @@ void test_3D(){
     const SpatialRegion_c & sr1 = newSpatialRegion3D(crd1[0], 8);
     const SpatialRegion_c & sr2 = newSpatialRegion3D(crd2[0], 8);
     printf("3D Spatial Operation Tetst...\n");
-    union_of(sr1, sr2);
-    relative_complement_of(sr1,sr2);    
+    union_of( sr1, sr2 );
+    relative_complement_of( sr1, sr2 );    
 }

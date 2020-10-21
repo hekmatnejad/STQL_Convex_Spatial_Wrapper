@@ -1,5 +1,6 @@
 //#include <cilantro/spatial/space_region.hpp>
 #include <stdlib.h>
+#include <type_traits>
 #include "cvx_polytope_spatial.h"
 #include "cilantro_wrapper.h"
 
@@ -34,9 +35,9 @@ extern "C" {
                 return newReg;
         }
 
-        void release_mem(SpatialRegion_c** sr ){
-
-        }
+        void release_mem(const SpatialRegion_c &sr){
+                ((SpatialRegion*)sr.obj)->sr_release(); 
+        }       
 
         void complement_of(const SpatialRegion_c &sr){
                 cout << "Complement\n";
@@ -49,6 +50,8 @@ extern "C" {
 
         void relative_complement_of(const SpatialRegion_c &sr1, const SpatialRegion_c &sr2){
                 cout << "Relative Complement\n";
+                if(sr1.obj == NULL)
+                        return;
                 ((SpatialRegion*)sr1.obj)->sr_relative_complement(( SpatialRegion *)sr2.obj);
                 if( ((SpatialRegion*)sr1.obj)->get_dim() == dimension::D2)
                         ((SpatialRegion*)sr1.obj)->print_space_region2D();
@@ -73,4 +76,17 @@ extern "C" {
                 else
                         ((SpatialRegion*)sr1.obj)->print_space_region3D();
         }
+
+        void print_spatial_region(const SpatialRegion_c &sr){
+                if((SpatialRegion*)sr.obj == nullptr){
+                        cout << "Object is NULL.\n";
+                        return;
+                }
+
+                if( ((SpatialRegion*)sr.obj)->get_dim() == dimension::D2)
+                        ((SpatialRegion*)sr.obj)->print_space_region2D();
+                else
+                        ((SpatialRegion*)sr.obj)->print_space_region3D();
+        }
+
 }

@@ -34,10 +34,15 @@
     }
 
     SpatialRegion* SpatialRegion::sr_clone(){
-            //std::cout << "clone\n";
+
             SpatialRegion* copy = new SpatialRegion();
-            copy->sRegion2D = this->sRegion2D;
+            //copy->sRegion2D = this->sRegion2D;
+            *copy = *this;
             return copy;
+    }
+
+    void SpatialRegion::sr_release(){
+            delete this;
     }
     
     void SpatialRegion::sr_complement(){

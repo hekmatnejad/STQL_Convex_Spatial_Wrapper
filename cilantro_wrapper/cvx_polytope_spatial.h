@@ -21,6 +21,7 @@ class SpatialRegion {
     cilantro::SpaceRegion3f sRegion3D;
 
 public:
+    //void* obj;
 
     SpatialRegion(){
 
@@ -28,7 +29,7 @@ public:
 
     
     ~SpatialRegion(){
-
+        cout << "object deleted.\n";
     };
 
     cilantro::SpaceRegion2f getRegion2D(){
@@ -44,7 +45,9 @@ public:
 
 
     SpatialRegion* sr_clone();
-    
+
+    void sr_release();
+
     void sr_complement();
 
     void sr_relative_complement(SpatialRegion *sr);
