@@ -30,7 +30,7 @@ public:
 
     
     ~SpatialRegion(){
-        cout << "object deleted.\n";
+        //cout << "object deleted.\n";
     };
 
     cilantro::SpaceRegion2f getRegion2D(){
@@ -65,25 +65,14 @@ public:
 
     void set_isEmpty(bool val);
 
-    void print_space_region2D(){
-        cout << "polytope size: " << this->sRegion2D.getConvexPolytopes().size() << endl;
-        for(auto polytope : this->sRegion2D.getConvexPolytopes()){
-                cout << "polytope:\n" << polytope.getVertices() << endl;    
-                cout << "Area: " << polytope.getArea() << endl;    
-                cout << "Volume: " << polytope.getVolume() << endl; 
-                cout << "--------------------------\n";   
-        }
-    }    
-    
-    void print_space_region3D(){
-        cout << "polytope size: " << this->sRegion3D.getConvexPolytopes().size() << endl;
-        for(auto polytope : this->sRegion3D.getConvexPolytopes()){
-                cout << "polytope:\n" << polytope.getVertices() << endl;    
-                cout << "Area: " << polytope.getArea() << endl;    
-                cout << "Volume: " << polytope.getVolume() << endl; 
-                cout << "--------------------------\n";   
-        }
-    }
+    double get_Area();
+
+    double get_Volume();
+
+    void print_space_region2D();
+     
+    void print_space_region3D();
+
 };
 
 #endif

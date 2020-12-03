@@ -30,6 +30,10 @@ void union_of(const SpatialRegion_c &sr1, const SpatialRegion_c &sr2);
 
 void intersection_of(const SpatialRegion_c &sr1, const SpatialRegion_c &sr2);
 
+double area_of(const SpatialRegion_c &sr);
+
+double volume_of(const SpatialRegion_c &sr);
+
 void print_spatial_region(const SpatialRegion_c &sr);
 
 #ifdef __cplusplus
